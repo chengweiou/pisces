@@ -8,21 +8,21 @@ export default class {
 }
 class All {
   static findById(e) {
-    let url = `${site.milkyway}/xxx/${e.id}`
+    let url = `${site.milkyway}/pet/${e.id}`
     let options = {
       method: 'GET',
     }
     return fetchUtil.run(url, options)
   }
   static count(filter) {
-    let url = `${site.milkyway}/xxx/count?${paramUtil.createUrlEncode(filter)}`
+    let url = `${site.milkyway}/pet/count?${paramUtil.createUrlEncode(filter)}`
     let options = {
       method: 'GET',
     }
     return fetchUtil.run(url, options)
   }
   static find(filter) {
-    let url = `${site.milkyway}/xxx?${paramUtil.createUrlEncode(filter)}`
+    let url = `${site.milkyway}/pet?${paramUtil.createUrlEncode(filter)}`
     let options = {
       method: 'GET',
     }
@@ -31,7 +31,7 @@ class All {
 }
 class Mg {
   static save(e) {
-    let url = `${site.milkyway}/mg/xxx`
+    let url = `${site.milkyway}/mg/pet`
     let formData = paramUtil.createFormData(e)
     let options = {
       method: 'POST',
@@ -40,18 +40,19 @@ class Mg {
     return fetchUtil.run(url, options)
   }
   static remove(e) {
-    let url = `${site.milkyway}/mg/xxx/${e.id}`
+    let url = `${site.milkyway}/mg/pet/${e.id}`
     let options = {
       method: 'DELETE',
     }
     return fetchUtil.run(url, options)
   }
   static update(e) {
-    let url = `${site.milkyway}/mg/xxx/${e.id}`
+    let url = `${site.milkyway}/mg/pet/${e.id}`
     let options = {
       method: 'PUT',
       body: e,
     }
     return fetchUtil.run(url, options)
   }
+
 }

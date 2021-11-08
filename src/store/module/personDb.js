@@ -2,7 +2,7 @@ import { clone, emptyFn } from '@/fn'
 const CLEAN_STATE = {
   db: true,
   cache: false,
-  save: {...emptyFn.xxx(), id: null},
+  save: { id: null },
 }
 
 const state = clone(CLEAN_STATE)

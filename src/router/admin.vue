@@ -1,20 +1,16 @@
 <template>
   <el-container style="min-height: 100%;">
-    <el-header style="border-bottom: solid 1px #fff; "><projHeader /></el-header>
+    <el-aside class="bg-theme6" style="width: auto; "><projAsider /></el-aside>
     <el-container>
-      <el-aside style="width: auto;"><projAsider></projAsider></el-aside>
-      <el-main>
-        <router-view/>
-      </el-main>
+      <router-view/>
+      <el-footer>
+        <projFooter/>
+      </el-footer>
     </el-container>
-    <el-footer>
-      <projFooter/>
-    </el-footer>
   </el-container>
 </template>
 <script setup>
 // tip: 导入 component
-import projHeader from '@/component/nav/projHeader.vue'
 import projFooter from '@/component/nav/projFooter.vue'
 import projAsider from '@/component/nav/projAsider.vue'
 // tip: 导入 data

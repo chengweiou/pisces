@@ -1,27 +1,38 @@
-import service from '@/sdk/xxxService'
-import uploadService from '@/sdk/uploadService'
+import service from '@/sdk/personService'
 import { clone, emptyFn } from '@/fn'
+import accountService from '@/sdk/accountService'
+import uploadService from '@/sdk/uploadService'
 
-const CLEAN_STATE = {
+let CLEAN_STATE = {
   total: 0,
   page: { curr: 1 },
   filter: { k: '', skip: 0, limit: 10 },
   list: [],
-  detail: emptyFn.xxx(),
+  detail: { },
+
+  byTrainer: {
+    total: 0,
+    page: { curr: 1 },
+    filter: { k: '', skip: 0, limit: 10 },
+    list: [],
+  },
+
 }
 
 const state = clone(CLEAN_STATE)
 
 const actions = {
   async save({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let {img, ...e} = payload
-    let rest = await uploadService.mg().save({ file: payload.img, category: 'xxx', nameWithoutType: '', w: 500 })
-    if (rest.code !== 'OK') {
-      dispatch('failBox/onRest', rest, { root: true })
-      return
+    let { img, ...e } = payload
+    if (payload.img) {
+      let rest = await uploadService.mg().save({ file: payload.img, category: 'person', w: 500 })
+      if (rest.code !== 'OK') {
+        dispatch('failBox/onRest', rest, { root: true })
+        return
+      }
+      e.imgsrc = rest.data
     }
-    e.imgsrc = rest.data
-    rest = await service.mg().save(e)
+    let rest = await service.mg().save(e)
     if (rest.code !== 'OK') {
       dispatch('failBox/onRest', rest, { root: true })
       return
@@ -29,7 +40,7 @@ const actions = {
     state.list.push({ ...e, id: rest.data })
     commit('list', state.list)
     dispatch('modal/off', null, { root: true })
-    dispatch('xxxDb/cleanSave', null, { root: true })
+    dispatch('personDb/cleanSave', null, { root: true })
     return true
   },
   async remove({ commit, dispatch, state, rootState }, payload, config = {}) {
@@ -42,26 +53,25 @@ const actions = {
     return true
   },
   async update({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let {img, ...e} = payload
+    let { img, nextLessonList, ...e } = payload
     if (payload.img) {
-      let rest = await uploadService.mg().save({ file: payload.img, category: 'xxx', nameWithoutType: payload.id, w: 500 })
+      let rest = await uploadService.mg().save({ file: payload.img, category: 'person', nameWithoutType: `avatar${payload.id}`, w: 500 })
       if (rest.code !== 'OK') {
         dispatch('failBox/onRest', rest, { root: true })
         return
       }
       e.imgsrc = rest.data
     }
-
     let rest = await service.mg().update(e)
     if (rest.code !== 'OK') {
       dispatch('failBox/onRest', rest, { root: true })
       return false
     }
-    commit('detail', e)
+    commit('detail', {...e, nextLessonList})
     return true
   },
   async findById({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let rest = await service.all().findById({ id: payload.id })
+    let rest = await service.mg().findById({ id: payload.id })
     if (rest.code !== 'OK') {
       dispatch('failBox/onRest', rest, { root: true })
       return
@@ -79,7 +89,7 @@ const actions = {
     commit('page', payload)
   },
   async count({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let rest = await service.all().count({ ...state.filter, ...payload })
+    let rest = await service.mg().count({ ...state.filter, ...payload })
     if (rest.code !== 'OK') {
       dispatch('failBox/onRest', rest, { root: true })
       return
@@ -87,7 +97,8 @@ const actions = {
     commit('total', rest.data)
   },
   async find({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let rest = await service.all().find({ ...state.filter, ...payload })
+    commit('list', [])
+    let rest = await service.mg().find({ ...state.filter, ...payload })
     if (rest.code !== 'OK') {
       dispatch('failBox/onRest', rest, { root: true })
       return
@@ -102,6 +113,7 @@ const actions = {
   resetDetail({ commit, dispatch, state, rootState }, payload, config = {}) {
     commit('detail', {})
   },
+
 }
 
 const mutations = {
@@ -126,6 +138,22 @@ const mutations = {
   },
   list(state, e) {
     state.list = e
+  },
+  totalByTrainer(state, e) {
+    state.byTrainer.total = e
+  },
+  pageByTrainer(state, e) {
+    state.byTrainer.page = e
+  },
+  resetFilterByTrainer(state, e) {
+    state.byTrainer.filter = { ...clone(CLEAN_STATE).byTrainer.filter }
+    state.byTrainer.list = []
+  },
+  filterByTrainer(state, e) {
+    state.byTrainer.filter = e
+  },
+  listByTrainer(state, e) {
+    state.byTrainer.list = e
   },
 }
 

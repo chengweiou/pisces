@@ -1,13 +1,14 @@
 <template>
-  <div class="f-c" style="height: 100%;">
-    <router-view name="full"/>
-    <fail-box/>
+<div style="border-bottom: solid 1px #6B4984;">
+  <div class="df df-jcsb df-aic" style="margin: 0 20px; height: 60px;">
+    <slot />
   </div>
+</div>
+
 </template>
 
 <script setup>
 // tip: 导入 component
-import FailBox from '@/component/failBox/index.vue'
 // tip: 导入 data
 // tip: 定义 各种 use
 // tip: 定义 页面
@@ -18,9 +19,5 @@ import FailBox from '@/component/failBox/index.vue'
 // tip: 初始化空数据
 </script>
 
-
-<script>
-export default {
-  name: 'App',
-}
-</script>
+<style scoped>
+</style>

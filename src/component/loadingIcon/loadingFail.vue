@@ -1,5 +1,7 @@
 <template>
-  <div>加载失败</div>
+  <div style="margin: 0 20px 20px;">
+    <div class="center">加载失败</div>
+  </div>
 </template>
 <script setup>
 // tip: 导入 component

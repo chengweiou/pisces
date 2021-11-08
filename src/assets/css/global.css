@@ -1,0 +1,173 @@
+html {
+  height: 100%;
+  background: linear-gradient(45deg, #855988, #6B4984, #483475, #2B2F77, #141852, #070B34) fixed;
+}
+body {
+  margin: 0;
+  height: 100%;
+  background: transparent;
+  color: #ADD8E6;
+  outline: none;
+  font-family: "PingHei","Helvetica Neue","Helvetica","Arial","Verdana","sans-serif";
+}
+input { outline: none; }
+button { outline: none; }
+
+.c-theme1 { color: #855988; }
+.c-theme2 { color: #6B4984; }
+.c-theme3 { color: #483475; }
+.c-theme4 { color: #2B2F77; }
+.c-theme5 { color: #141852; }
+.c-theme6 { color: #070B34; }
+
+.bg-theme1 { background: #855988; }
+.bg-theme2 { background: #6B4984; }
+.bg-theme3 { background: #483475; }
+.bg-theme4 { background: #2B2F77; }
+.bg-theme5 { background: #141852; }
+.bg-theme6 { background: #070B34; }
+
+.c-light1 { color: #7DF9FF }
+.c-light2 { color: #ADD8E6; }
+
+.bg-white { background: #ADD8E6; }
+.c-white { color: #ADD8E6; }
+.bor-white { border: 1px solid #ADD8E6; }
+.btn-white {
+  background: transparent;
+  border: 1px solid #ADD8E6;
+  color: #ADD8E6;
+  cursor: pointer;
+}
+.btn-white:hover {
+  background: #ADD8E6;
+  border: 1px solid #ADD8E6;
+  color: #070B34;
+}
+
+.bg-black { background: #070B34; }
+.c-black { color: #070B34; }
+
+.c-warning { color: #e6a23c; }
+.c-danger { color: #f56c6c; }
+
+.f-t1 {
+  font-size: 18px;
+  font-weight: 500;
+}
+.f-t2 {
+  font-size: 14px;
+  font-weight: 400;
+}
+.f-t3 {
+  font-weight: 400;
+}
+.f-c {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+
+.df { display: flex; }
+.df-jcsb { justify-content: space-between; }
+.df-jcse { justify-content: space-evenly; }
+.df-jcfe { justify-content: flex-end; }
+.df-aic { align-items: center; }
+.df-aife { align-items: flex-end; }
+.df-wrap { flex-wrap: wrap; }
+.df-wrap-reverse { flex-wrap: wrap-reverse; }
+.df-column { flex-direction: column; }
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pointer { cursor: pointer; }
+.link:hover { color: #7DF9FF; }
+
+/* .el-table {
+  background: transparent;
+  color: #7DF9FF;
+} */
+/* .el-table th, .el-table tr {
+  background: transparent;
+} */
+
+.el-card {
+  --el-card-background-color: #070B34;
+  --el-card-border-color: #070B34;
+}
+
+.el-tag.el-tag--info { background: transparent; }
+.el-tag.el-tag--warning { background: transparent; }
+.el-tag.el-tag--danger { background: transparent; }
+
+.el-loading-mask {
+  background: transparent;
+}
+
+:root {
+  --el-text-color-regular: #7DF9FF;
+  --el-text-color-primary: #fff;
+  --el-background-color-base: transparent;
+  --el-border-color-base: #2B2F77;
+}
+.el-menu {
+  --el-menu-background-color: transparent;
+  --el-menu-hover-background-color: #409eff;
+  --el-menu-active-color: #fff;
+  --el-menu-text-color: #7DF9FF;
+}
+.el-table {
+  --el-table-background-color: transparent;
+  --el-table-tr-background-color: transparent;
+  --el-table-row-hover-background-color: transparent;
+  --el-table-font-color: #7DF9FF;
+}
+.el-table th.el-table__cell {
+  --el-table-header-background-color: transparent;
+}
+
+.el-pagination {
+  --el-pagination-background-color: transparent;
+  --el-pagination-button-background-color: transparent;
+  --el-pagination-button-disabled-background-color: transparent;
+}
+.el-input {
+  --el-input-background-color: transparent;
+}
+
+.el-button {
+  --el-button-font-weight: var(--el-font-weight-primary);
+  --el-button-border-color: #2B2F77;
+  --el-button-background-color: transparent;
+  --el-button-font-color: var(--el-text-color-regular);
+  --el-button-disabled-font-color: var(--el-text-color-placeholder);
+  --el-button-disabled-background-color: var(--el-color-white);
+  --el-button-disabled-border-color: var(--el-border-color-light);
+  --el-button-divide-border-color: rgba(255, 255, 255, 0.5);
+}
+.el-button:focus, .el-button:hover {
+  color: #409eff;
+  background: #2B2F77;
+  border-color: #2B2F77;
+}
+.el-select__popper.el-popper[role=tooltip] {
+  background: rgba(7, 11, 52, .9);
+}
+.el-dropdown__popper.el-popper[role=tooltip] {
+  background: rgba(7, 11, 52, .9);
+}
+.el-radio-button__inner {
+  background: transparent;
+}
+.el-radio-button {
+  --el-radio-button-checked-background-color: transparent;
+  --el-radio-button-checked-border-color: #7DF9FF;
+  --el-button-font-color: #2B2F77;
+}
+
+.el-popper.is-light {
+  background: rgba(7, 11, 52, .9);
+}
