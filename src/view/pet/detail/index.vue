@@ -15,7 +15,7 @@ import Overview from './overview.vue'
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { wait, emptyFn, clone } from '@/fn'
+import { wait, empty, clone } from '@/fn'
 // tip: 定义 各种 use
 const store = useStore(), router = useRouter(), route = useRoute()
 // tip: 定义 页面
@@ -35,7 +35,7 @@ const findById = async() => {
   loading.value = false
 }
 // tip: 初始化空数据
-store.state.pet.detail = emptyFn.pet()
+store.state.pet.detail = empty.pet()
 findById()
 </script>
 

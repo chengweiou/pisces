@@ -34,7 +34,7 @@ import { ElNotification } from 'element-plus'
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { wait, emptyFn, clone, valid } from '@/fn'
+import { wait, empty, clone, valid } from '@/fn'
 // tip: 定义 各种 use
 const store = useStore(), router = useRouter(), route = useRoute()
 // tip: 定义 页面
@@ -50,7 +50,7 @@ const rules = {
   rePassword: [{ validator: (rule, value, callback) => valid.checkRepassword(form.value.password, value, callback), trigger: 'blur' }],
 }
 const cleanForm = {
-  ...emptyFn.account(), person: { id: route.params.id },
+  ...empty.account(), person: { id: route.params.id },
 }
 // tip: 定义 需要关联的
 const form = ref(clone(cleanForm))
@@ -90,7 +90,7 @@ const update = () => {
   })
 }
 // tip: 初始化空数据
-store.state.account.detail = emptyFn.account()
+store.state.account.detail = empty.account()
 findByPerson()
 
 </script>

@@ -1,4 +1,4 @@
-import { clone, emptyFn } from '@/fn'
+import { clone, empty } from '@/fn'
 import service from '@/sdk/accountService'
 
 const CLEAN_STATE = {

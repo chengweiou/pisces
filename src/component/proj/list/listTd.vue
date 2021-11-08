@@ -1,5 +1,5 @@
 <template>
-  <div style="margin: 0 3px; padding: 20px 0; flex: 1; color: #7DF9FF; font-weight: 400; overflow: hidden; text-overflow: ellipsis;"><slot /></div>
+  <div class="df df-aic" style="margin: 0 3px; padding: 20px 0; flex: 1; color: #7DF9FF; font-weight: 400; overflow: hidden; text-overflow: ellipsis;"><slot /></div>
 </template>
 
 <script setup>

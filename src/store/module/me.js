@@ -1,7 +1,7 @@
 import accountService from '@/sdk/accountService'
 import personService from '@/sdk/personService'
 import { router } from '@/router'
-import { clone, emptyFn } from '@/fn'
+import { clone, empty } from '@/fn'
 const CLEAN_STATE = {
   showLogin: false,
   user: {}, // 目前用于给db获取身份区别

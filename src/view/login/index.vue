@@ -22,7 +22,7 @@ import { ElNotification } from 'element-plus'
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { wait, emptyFn, clone } from '@/fn'
+import { wait, empty, clone } from '@/fn'
 // tip: 定义 各种 use
 const store = useStore(), router = useRouter(), route = useRoute()
 // tip: 定义 页面
@@ -33,7 +33,7 @@ const rules = {
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 }
 const cleanForm = {
-  ...emptyFn.account(),
+  ...empty.account(),
 }
 // tip: 定义 需要关联的
 const form = ref(clone(cleanForm))

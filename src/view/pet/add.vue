@@ -40,7 +40,7 @@ import { ElNotification } from 'element-plus'
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { wait, emptyFn, clone } from '@/fn'
+import { wait, empty, clone } from '@/fn'
 // tip: 定义 各种 use
 const store = useStore(), router = useRouter(), route = useRoute()
 // tip: 定义 页面
@@ -53,7 +53,7 @@ const rules = {
   personId: [{ required: true, message: '请选择主人', trigger: 'blur' }],
 }
 const cleanForm = {
-  ...emptyFn.pet(),
+  ...empty.pet(),
   ...store.state.petDb.save,
 }
 // tip: 定义 需要关联的

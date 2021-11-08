@@ -1,7 +1,7 @@
 <template>
   <proj-header :has-back="true" @back="go('personList')">{{detail.name}}</proj-header>
   <div style="margin-bottom: 20px;"></div>
-  <div v-if="!loading">
+  <div>
     <tab v-model:tab="tab" name="person" :list="tabNameList"/>
     <component :is="
       loading ? LoadingCard
@@ -24,7 +24,7 @@ import LoadingFail from '@/component/loadingIcon/loadingFail.vue'
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { wait, emptyFn, clone } from '@/fn'
+import { wait, empty, clone } from '@/fn'
 // tip: 定义 各种 use
 const store = useStore(), router = useRouter(), route = useRoute()
 // tip: 定义 页面
@@ -46,7 +46,7 @@ const findById = async() => {
   loading.value = false
 }
 // tip: 初始化空数据
-store.state.person.detail = emptyFn.person()
+store.state.person.detail = empty.person()
 findById()
 </script>
 

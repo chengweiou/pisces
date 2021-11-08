@@ -1,9 +1,9 @@
 import service from '@/sdk/personService'
-import { clone, emptyFn } from '@/fn'
+import { clone, empty } from '@/fn'
 import accountService from '@/sdk/accountService'
 import uploadService from '@/sdk/uploadService'
 
-let CLEAN_STATE = {
+const CLEAN_STATE = {
   total: 0,
   page: { curr: 1 },
   filter: { k: '', skip: 0, limit: 10 },

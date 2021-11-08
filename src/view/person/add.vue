@@ -46,7 +46,7 @@ import { ElNotification } from 'element-plus'
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { wait, emptyFn, clone, valid } from '@/fn'
+import { wait, empty, clone, valid } from '@/fn'
 // tip: 定义 各种 use
 const store = useStore(), router = useRouter(), route = useRoute()
 // tip: 定义 页面
@@ -63,7 +63,7 @@ const rules = {
   rePassword: [{ validator: (rule, value, callback) => valid.checkRepassword(form.value.password, value, callback), trigger: 'blur' }],
 }
 const cleanForm = {
-  ...emptyFn.person(),
+  ...empty.person(),
   ...store.state.personDb.save,
 }
 // tip: 定义 需要关联的

@@ -41,7 +41,7 @@ import ElUpdateBtn from '@/component/el/el-update-btn.vue'
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { wait, emptyFn, clone } from '@/fn'
+import { wait, empty, clone } from '@/fn'
 // tip: 定义 各种 use
 const store = useStore(), router = useRouter(), route = useRoute()
 // tip: 定义 页面
@@ -54,7 +54,7 @@ const rules = {
   name: [{ required: true, message: '请输入名称', trigger: 'blur' }],
 }
 const cleanForm = {
-  ...emptyFn.pet(), personId: 0,
+  ...empty.pet(), personId: 0,
   ...store.state.petDb.save,
 }
 // tip: 定义 需要关联的

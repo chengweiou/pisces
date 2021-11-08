@@ -10,7 +10,7 @@ import Editor from '@tinymce/tinymce-vue'
 import { ref, computed, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { wait, emptyFn, clone, site } from '@/fn'
+import { wait, empty, clone, site } from '@/fn'
 // tip: 定义 各种 use
 const store = useStore(), router = useRouter(), route = useRoute()
 // tip: 定义 页面
