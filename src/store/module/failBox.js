@@ -43,10 +43,7 @@ function getNameAndContent(code) {
     case '-1': return { name: 'Connection fail', content: 'Due to dev, server down, page not found... Due to prod, network error' }
     case 'UNAUTH': return { name: 'Unauth to continue', content: 'token needed' }
     case 'PARAM': return { name: 'Input param erorr', content: 'unchecked param sent to server' }
-    case 'FAIL': return { name: '操作失败', content: '' }
-    case 'STUDENT_NOT_EXISTS': return { name: '学生不存在', content: '' }
-    case 'STUDENT_COURSE_NOT_EXISTS': return { name: '学生不在课程内', content: '' }
-    case 'STUDENT_COMMODITY_NOT_EXISTS': return { name: '学生未购买商品', content: '' }
+    case 'FAIL': return { name: 'Operation Fail', content: '' }
     case 'EXISTS': return { name: 'DATA exist', content: '' }
     default: return { name: code }
   }

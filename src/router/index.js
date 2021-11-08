@@ -8,9 +8,9 @@ export const router = createRouter({
       path: '/',
       components: { full: () => import('./full.vue') },
       children: [
-        { name: 'log', path: '/log', component: () => import('@/view/log/index.vue') },
-        { name: 'refresh', path: '/refresh', component: () => import('@/view/refresh.vue') },
-        { name: 'login', path: '/', component: () => import('@/view/login/index.vue') },
+        { name: 'log', path: 'log', component: () => import('@/view/log/index.vue') },
+        { name: 'refresh', path: 'refresh', component: () => import('@/view/refresh.vue') },
+        { name: 'login', path: '', component: () => import('@/view/login/index.vue') },
       ],
     },
     {
