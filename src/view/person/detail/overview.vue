@@ -2,7 +2,7 @@
   <el-card style="margin: 0 20px 20px;">
     <el-form ref="formEl" style="flex: 1;" :model="form" :rules="rules" label-width="120px" label-position="left" @submit.prevent>
       <div class="df df-wrap">
-        <el-form-item style="flex: 1;" label="类型" prop="type">
+        <el-form-item style="flex: 1;" :label="t('type')" prop="type">
           <el-radio-group v-show="showUpdate" v-model="form.type">
             <el-radio-button v-for="e in typeList" :key="e.k" :label="e.k">{{e.v}}</el-radio-button>
           </el-radio-group>
@@ -10,11 +10,11 @@
         </el-form-item>
       </div>
       <div class="df df-wrap">
-        <el-form-item style="margin-right: 100px; flex: 1;" label="名称" prop="name">
+        <el-form-item style="margin-right: 100px; flex: 1;" :label="t('name')" prop="name">
           <el-input v-show="showUpdate" v-model="form.name"/>
           <el-input-div v-show="!showUpdate">{{detail.name}}</el-input-div>
         </el-form-item>
-        <el-form-item style="margin-right: 100px; flex: 1;" label="电话" prop="phone">
+        <el-form-item style="margin-right: 100px; flex: 1;" :label="t('phone')" prop="phone">
           <el-input v-show="showUpdate" v-model="form.phone"/>
           <el-input-div v-show="!showUpdate">{{detail.phone}}</el-input-div>
         </el-form-item>
@@ -33,18 +33,19 @@ import ElUpdateBtn from '@/component/el/el-update-btn.vue'
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { wait, empty, clone } from '@/fn'
+import { useI18n } from 'vue-i18n'
+import { wait, empty, clone, valid, simpleRule } from '@/fn'
 // tip: 定义 各种 use
-const store = useStore(), router = useRouter(), route = useRoute()
+const store = useStore(), router = useRouter(), route = useRoute(), { t } = useI18n()
 // tip: 定义 页面
 const formEl = ref(null)
 // tip: 定义 不需要关联的
 const typeMap = store.state.personTrans.typeMap
 const typeList = store.state.personTrans.typeList
 const rules = {
-  name: [{ required: true, message: '请输入名称', trigger: 'blur' }],
-  personId: [{ required: true, message: '请选择会员', trigger: 'blur' }],
-  startEndDate: [{ required: true, message: '请选择时间', trigger: 'blur' }],
+  type: simpleRule.type,
+  name: simpleRule.name,
+  phone: simpleRule.phone,
 }
 const cleanForm = {
   ...empty.person(),
@@ -88,7 +89,7 @@ const update = () => {
     loading.value = false
     if (!pList[0]) return
     showUpdate.value = false
-    ElNotification({ type: 'success', title: '成功' })
+    ElNotification({ type: 'success', title: t('success') })
   })
 }
 // tip: 初始化空数据

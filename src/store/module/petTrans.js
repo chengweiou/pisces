@@ -1,7 +1,9 @@
 import { clone } from '@/fn'
+import { i18n } from '@/i18n'
+const { t } = i18n.global
 
 const CLEAN_STATE = {
-  typeMap: { DOG: 'dog', cat: 'cat' },
+  typeMap: { DOG: t('dog'), cat: t('cat') },
 }
 
 const state = clone(CLEAN_STATE)

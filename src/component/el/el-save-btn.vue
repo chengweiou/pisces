@@ -1,6 +1,6 @@
 <template>
   <div v-if="!loading" class="df" style="margin: 0 20px 20px;">
-    <el-button class="bg-blue c-white" style="width: 160px; height: 40px;" @click="$emit('save')">保存</el-button>
+    <el-button class="bg-blue c-white" style="width: 160px; height: 40px;" @click="$emit('save')">{{t('save')}}</el-button>
   </div>
   <div v-if="loading" class="df" style="margin: 0 20px 20px;">
     <div v-loading="loading" style="width: 160px; height: 40px;"></div>
@@ -10,7 +10,9 @@
 <script setup>
 // tip: 导入 component
 // tip: 导入 data
+import { useI18n } from 'vue-i18n'
 // tip: 定义 各种 use
+const { t } = useI18n()
 // tip: 定义 页面
 defineProps({
   loading: { type: Boolean, default: false },

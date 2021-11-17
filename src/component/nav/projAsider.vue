@@ -3,8 +3,8 @@
   <input id="profile-switch" type="checkbox"/>
   <div class="center df-column" style="">
     <div style="width: 50px; height: 50px;"><avatar src="a.png"/></div>
-    <div class="center link pointer" style="width: 100%; height: 30px;" @click="go('profile')">个人资料</div>
-    <div class="center link pointer" style="width: 100%; height: 30px;" @click="logout">登出</div>
+    <div class="center link pointer" style="width: 100%; height: 30px;" @click="go('profile')">{{t('profile')}}</div>
+    <div class="center link pointer" style="width: 100%; height: 30px;" @click="logout">{{t('logout')}}</div>
   </div>
   <el-menu :default-active="active" :collapse="isCollapse" class="el-menu-vertical-demo" style="border: 0;">
     <el-menu-item index="dashboard" @click="goAsider('dashboard')"><icon-document-checked style="margin: 3px; width: 12px;"/>{{t('dashboard')}}</el-menu-item>
@@ -27,7 +27,7 @@
     <el-sub-menu index="i18nGroup">
       <template #title>
         <icon-location style="margin: 3px; width: 12px;"/>
-        <span>语言</span>
+        <span>{{t('language')}}</span>
       </template>
       <el-menu-item index="i18nZh" @click="changeLanguage('zh')">中文</el-menu-item>
       <el-menu-item index="i18nEn" @click="changeLanguage('en')">English</el-menu-item>
@@ -46,9 +46,8 @@ import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { wait, empty, clone, storage } from '@/fn'
-
 // tip: 定义 各种 use
-const store = useStore(), router = useRouter(), route = useRoute(), { t, locale } = useI18n({ inheritLocale: true })
+const store = useStore(), router = useRouter(), route = useRoute(), { t, locale } = useI18n()
 // tip: 定义 页面
 // tip: 定义 不需要关联的
 // tip: 定义 需要关联的
@@ -76,8 +75,10 @@ const logout = async() => {
   store.dispatch('ws/disconnect')
 }
 const changeLanguage = (v) => {
+  if (locale.value == v) return
   locale.value = v
   storage.set('lang', locale.value)
+  router.go()
 }
 
 // tip: 初始化空数据
@@ -117,19 +118,19 @@ input[type=checkbox]:checked+div {
 
 <i18n>
 en:
-  login: login
   dashboard: Dashboard
   managment: Manament
-  all: 所有
-  add: 添加
-  person: User
-  pet: Pet
+  all: All
+  add: Add
+  language: Language
+  profile: Profile
+  logout: Logout
 zh:
-  login: 登录
   dashboard: 面板
   managment: 管理
   all: 所有
   add: 添加
-  person: 用户
-  pet: 宠物
+  language: 语言
+  profile: 个人资料
+  logout: 登出
 </i18n>

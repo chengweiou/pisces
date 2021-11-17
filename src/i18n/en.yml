@@ -1,1 +1,40 @@
-message: 'yml-en'
+message: yml-en
+
+person: User
+member: Member
+employee: Employee
+guest: Guest
+pet: Pet
+account: Account
+
+username: Username
+password: Password
+rePassword: Re-Password
+name: Name
+des: Des
+img: Image
+type: Type
+date: Date
+time: Time
+
+success: Success
+fail: Fail
+
+checkKey: Same data exists
+checkName: Same name exists
+checkUsername: Same username exists
+checkRepassword: re-password not the same
+
+needName: Please enter name
+needNameLen100: name length > 100
+needDes: Please enter description
+needImg: Please select image
+needType: Please select type
+needPhone: Please enter phone
+needUsernameLen3: username length > 3
+needPasswordLen3: password length > 3
+needPerson: Please select user
+needDate: Please enter date
+
+dog: dog
+cat: cat

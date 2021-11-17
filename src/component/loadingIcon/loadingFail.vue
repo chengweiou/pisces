@@ -1,11 +1,13 @@
 <template>
   <div style="margin: 0 20px 20px;">
-    <div class="center">加载失败</div>
+    <div class="center">{{t('loadingFail')}}</div>
   </div>
 </template>
 <script setup>
 // tip: 导入 component
-// tip: 导入 data
+import { useI18n } from 'vue-i18n'
+// tip: 定义 各种 use
+const { t } = useI18n()
 // tip: 定义 各种 use
 // tip: 定义 页面
 // tip: 定义 不需要关联的
@@ -20,3 +22,10 @@
 <style>
 
 </style>
+
+<i18n>
+en:
+  loadingFail: Loading Fail
+zh:
+  loadingFail: 加载失败
+</i18n>

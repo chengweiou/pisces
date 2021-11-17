@@ -3,15 +3,15 @@
  * option包含: from, to, utc 的格式传递
  * from default is utc time. to aways is local time
  */
-const defaultOption = { from: 'yyyy-MM-ddTHH:mm:ss', to: 'yyyy-MM-dd HH:mm:ss', utc: true }
+const defaultOption = { from: 'yyyy-MM-ddTHH:mm:ssZ', to: 'yyyy-MM-dd HH:mm:ss', utc: true }
 export default (e, option) => {
   if (!e) return ''
   if (Object.prototype.toString.call(e) === '[object Date]') e = e.toISOString()
   option = { ...defaultOption, ...option }
-  if (option.from === 'yyyy-MM-ddTHH:mm:ss' && e.length === 10) option.from = 'yyyy-MM-dd'
+  if (option.from === 'yyyy-MM-ddTHH:mm:ssZ' && e.length === 10) option.from = 'yyyy-MM-dd'
   let from = option.from
   let to = option.to
-  let date = new Date(`${transformFrom(e, from)}${option.utc ? 'Z' : ''}`)
+  let date = new Date(`${transformFrom(e, from)}`)
   if (isNaN(date.getTime())) return `Invalid Date: ${e}`
   return transformTo(date, to)
 }

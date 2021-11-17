@@ -1,7 +1,9 @@
 import { clone } from '@/fn'
+import { i18n } from '@/i18n'
+const { t } = i18n.global
 
 const CLEAN_STATE = {
-  typeMap: { SUPER: '超级', EMPLOYEE: '员工', MEMBER: '会员', GUEST: '访客' },
+  typeMap: { SUPER: t('super'), EMPLOYEE: t('employee'), MEMBER: t('member'), GUEST: t('guest') },
 }
 
 const state = clone(CLEAN_STATE)

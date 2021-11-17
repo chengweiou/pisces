@@ -1,16 +1,16 @@
 <template>
-  <proj-header><icon-pie-chart style="margin-right: 10px; width: 24px;"/>{{total}} 宠物</proj-header>
+  <proj-header><icon-pie-chart style="margin-right: 10px; width: 24px;"/>{{total}} {{t('pet')}}</proj-header>
   <list-search-bar>
-    <el-input v-model="filter.k" style="width: 300px;" placeholder="关键字" @keyup.enter="changeFilter"></el-input>
-    <el-select v-model="sort" placeholder="请选择" @change="changeFilter">
+    <el-input v-model="filter.k" style="width: 300px;" :placeholder="t('search')" @keyup.enter="changeFilter"></el-input>
+    <el-select v-model="sort" :placeholder="t('sort')" @change="changeFilter">
       <el-option v-for="e in sortList" :key="e.value" :label="e.label" :value="e.value"></el-option>
     </el-select>
   </list-search-bar>
   <el-container v-loading="loading" class="df-column c-black" style="margin: 0 20px;">
     <list-th-row>
       <list-th>id</list-th>
-      <list-th>type</list-th>
-      <list-th>name</list-th>
+      <list-th>{{t('type')}}</list-th>
+      <list-th>{{t('name')}}</list-th>
       <list-th-delete></list-th-delete>
     </list-th-row>
     <list-td-row v-for="(e, i) in list" :key="i" @click="goDetail(e)">
@@ -35,14 +35,15 @@ import ListSearchBar from '@/component/proj/listSearchBar.vue'
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { wait, empty, clone } from '@/fn'
 // tip: 定义 各种 use
-const store = useStore(), router = useRouter(), route = useRoute()
+const store = useStore(), router = useRouter(), route = useRoute(), { t } = useI18n()
 // tip: 定义 页面
 // tip: 定义 不需要关联的
 const sortList = [
-  { label: '日期排序 - 新->旧', value: 'updateAt,false' },
-  { label: '日期排序 - 旧->新', value: 'updateAt,true' },
+  { label: t('sortUpdateAtAz'), value: 'updateAt,false' },
+  { label: t('sortUpdateAtZa'), value: 'updateAt,true' },
 ]
 // tip: 定义 需要关联的
 const sort = ref('')

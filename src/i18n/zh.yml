@@ -1,1 +1,53 @@
-message: 'yml-zh'
+message: yml-zh
+
+person: 用户
+member: 会员
+employee: 员工
+guest: 访客
+pet: 宠物
+account: 账号
+
+username: 用户名
+password: 密码
+rePassword: 确认密码
+name: 名称
+phone: 电话
+email: Email
+des: 内容
+img: 图片
+type: 类型
+date: 日期
+time: 时间
+age: 年龄
+
+save: 保存
+update: 修改
+cancel: 取消
+
+search: 搜索
+sort: 排序
+sortUpdateAtZa: 更新日期 新->旧
+sortUpdateAtAz: 更新日期 旧->新
+choose: 请选择
+
+success: 成功
+fail: 失败
+
+checkKey: 相同信息已存在
+checkName: 相同名称已存在
+checkUsername: 相同用户名已存在
+checkRepassword: 两次密码不一致
+
+needName: 请输入名称
+needNameLen100: 名称长度不多于100
+needDes: 请输入内容
+needImg: 请选择图片
+needType: 请选择类型
+needPhone: 请输入电话
+needUsernameLen3: 用户名长度不小于3
+needPasswordLen3: 密码长度不小于3
+needPerson: 请选择用户
+needDate: 请选择日期
+
+dog: 狗
+cat: 猫

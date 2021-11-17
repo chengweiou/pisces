@@ -1,5 +1,5 @@
 <template>
-<el-popconfirm title="确认删除" @confirm="emit('click')">
+<el-popconfirm :title="t('delete')" @confirm="emit('click')">
   <template #reference>
     <list-td class="center" style="flex: 0 0 50px;"><icon-delete style="width: 12px;"/></list-td>
   </template>
@@ -11,7 +11,9 @@
 import { ListTd } from '.'
 import { Delete as IconDelete } from '@element-plus/icons'
 // tip: 导入 data
+import { useI18n } from 'vue-i18n'
 // tip: 定义 各种 use
+const { t } = useI18n()
 // tip: 定义 页面
 defineEmits(['click'])
 // tip: 定义 不需要关联的

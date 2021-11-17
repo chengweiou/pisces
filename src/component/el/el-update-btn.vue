@@ -1,8 +1,8 @@
 <template>
   <div v-if="!loading" class="df" style="margin-bottom: 20px;">
-    <el-button v-if="!showUpdate" class="bg-blue c-white" style="width: 160px; height: 40px;" @click="$emit('onUpdate')">修改</el-button>
-    <el-button v-if="showUpdate" class="bg-blue c-white" style="width: 160px; height: 40px;" @click="$emit('offUpdate')">取消</el-button>
-    <el-button v-if="showUpdate" class="bg-blue c-white" style="width: 160px; height: 40px;" @click="$emit('update')">保存</el-button>
+    <el-button v-if="!showUpdate" class="bg-blue c-white" style="width: 160px; height: 40px;" @click="$emit('onUpdate')">{{t('update')}}</el-button>
+    <el-button v-if="showUpdate" class="bg-blue c-white" style="width: 160px; height: 40px;" @click="$emit('offUpdate')">{{t('cancel')}}</el-button>
+    <el-button v-if="showUpdate" class="bg-blue c-white" style="width: 160px; height: 40px;" @click="$emit('update')">{{t('save')}}</el-button>
   </div>
   <div v-if="loading" class="df" style="margin-bottom: 20px;">
     <div v-loading="loading" style="width: 160px; height: 40px;"></div>
@@ -12,7 +12,9 @@
 <script setup>
 // tip: 导入 component
 // tip: 导入 data
+import { useI18n } from 'vue-i18n'
 // tip: 定义 各种 use
+const { t } = useI18n()
 // tip: 定义 页面
 defineProps({
   loading: { type: Boolean, default: false },

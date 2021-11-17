@@ -1,33 +1,33 @@
 <template>
-  <proj-header :has-back="true" @back="go('personList')">添加用户</proj-header>
+  <proj-header :has-back="true" @back="go('personList')">{{t('addPerson')}}</proj-header>
   <div style="margin-bottom: 20px;"></div>
   <el-form ref="formEl" style="flex: 1;" :model="form" :rules="rules" label-width="120px" label-position="left" @submit.prevent>
     <el-card style="margin: 0 20px 20px;">
       <div class="df df-wrap">
-        <el-form-item style="flex: 1;" label="类型" prop="type">
+        <el-form-item style="flex: 1;" :label="t('type')" prop="type">
           <el-radio-group v-model="form.type">
             <el-radio-button v-for="e in typeList" :key="e.k" :label="e.k">{{e.v}}</el-radio-button>
           </el-radio-group>
         </el-form-item>
       </div>
       <div class="df df-wrap">
-        <el-form-item style="margin-right: 100px; flex: 1;" label="名称" prop="name">
+        <el-form-item style="margin-right: 100px; flex: 1;" :label="t('name')" prop="name">
           <el-input v-model="form.name"/>
         </el-form-item>
-        <el-form-item style="margin-right: 100px; flex: 1;" label="电话" prop="phone">
+        <el-form-item style="margin-right: 100px; flex: 1;" :label="t('phone')" prop="phone">
           <el-input v-model="form.phone"/>
         </el-form-item>
       </div>
     </el-card>
     <el-card style="margin: 0 20px 20px;">
       <div class="sdf df-wrap">
-        <el-form-item style="flex: 1;" label="用户名" prop="username">
+        <el-form-item style="flex: 1;" :label="t('username')" prop="username">
           <el-input v-model="form.username"/>
         </el-form-item>
-        <el-form-item style="flex: 1;" label="密码" prop="password">
+        <el-form-item style="flex: 1;" :label="t('password')" prop="password">
           <el-input v-model="form.password" type="password" show-password/>
         </el-form-item>
-        <el-form-item style="flex: 1;" label="确认密码" prop="rePassword">
+        <el-form-item style="flex: 1;" :label="t('rePassword')" prop="rePassword">
           <el-input v-model="form.rePassword" type="password" show-password/>
         </el-form-item>
       </div>
@@ -46,20 +46,22 @@ import { ElNotification } from 'element-plus'
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { wait, empty, clone, valid } from '@/fn'
+import { useI18n } from 'vue-i18n'
+import { wait, empty, clone, valid, simpleRule } from '@/fn'
 // tip: 定义 各种 use
-const store = useStore(), router = useRouter(), route = useRoute()
+const store = useStore(), router = useRouter(), route = useRoute(), { t } = useI18n()
 // tip: 定义 页面
 const formEl = ref(null)
 // tip: 定义 不需要关联的
 const typeMap = store.state.personTrans.typeMap
 const typeList = store.state.personTrans.typeList
 const rules = {
-  type: [{ required: true, message: '请选择类型', trigger: 'blur' }],
-  name: [{ required: true, message: '请输入名字', trigger: 'blur' }],
-  phone: [{ required: true, message: '请输入电话', trigger: 'blur' }],
-  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }, { validator: (rule, value, callback) => valid.checkUsername('account', value, callback), trigger: 'blur' }],
-  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+  type: simpleRule.type,
+  name: simpleRule.name,
+  phone: simpleRule.phone,
+  username: simpleRule.username,
+  password: simpleRule.password,
+  name: simpleRule.name,
   rePassword: [{ validator: (rule, value, callback) => valid.checkRepassword(form.value.password, value, callback), trigger: 'blur' }],
 }
 const cleanForm = {
@@ -88,7 +90,7 @@ const save = () => {
     let pList = await Promise.all([store.dispatch('person/save', form.value), wait(1000)])
     loading.value = false
     if (!pList[0]) return
-    ElNotification({ type: 'success', title: '成功' })
+    ElNotification({ type: 'success', title: t('success') })
     go('personList')
   })
 }
@@ -100,3 +102,10 @@ findPerson()
 
 <style scoped>
 </style>
+
+<i18n>
+en:
+  addPerson: Add Person
+zh:
+  addPerson: 添加用户
+</i18n>
