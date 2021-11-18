@@ -44,6 +44,7 @@ needDes: 请输入内容
 needImg: 请选择图片
 needType: 请选择类型
 needPhone: 请输入电话
+needEmail: 请输入Email
 needUsernameLen3: 用户名长度不小于3
 needPasswordLen3: 密码长度不小于3
 needPerson: 请选择用户
@@ -51,3 +52,17 @@ needDate: 请选择日期
 
 dog: 狗
 cat: 猫
+
+codeNetwork: 请检查网络
+codeUNAUTH: 无权访问
+codePARAM: 参数错误
+codeFAIL: 操作失败
+codeEXISTS: 数据已存在
+codeNotEXISTS: 数据不存在
+
+msgNetwork: 开发环境，可能是服务器down了，地址不正确等... 生产环境，客户端网络问题
+msgUNAUTH: 需要token
+msgPARAM: 请检查传递的参数，查看response
+msgFAIL: ''
+msgEXISTS: ''
+msgNotEXISTS: ''

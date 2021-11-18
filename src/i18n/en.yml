@@ -11,11 +11,24 @@ username: Username
 password: Password
 rePassword: Re-Password
 name: Name
+phone: Phone
+email: Email
 des: Des
 img: Image
 type: Type
 date: Date
 time: Time
+age: Age
+
+save: Save
+update: Update
+cancel: Cancel
+
+search: Search
+sort: Sort
+sortUpdateAtZa: Update At, Z->A
+sortUpdateAtAz: Update At, A->Z
+choose: Please choose
 
 success: Success
 fail: Fail
@@ -31,6 +44,7 @@ needDes: Please enter description
 needImg: Please select image
 needType: Please select type
 needPhone: Please enter phone
+needEmail: Please enter email
 needUsernameLen3: username length > 3
 needPasswordLen3: password length > 3
 needPerson: Please select user
@@ -38,3 +52,17 @@ needDate: Please enter date
 
 dog: dog
 cat: cat
+
+codeNetwork: Connection fail
+codeUNAUTH: Unauth to continue
+codePARAM: Input param erorr
+codeFAIL: Operation Fail
+codeEXISTS: DATA exist
+codeNotEXISTS: DATA NOT exist
+
+msgNetwork: Due to dev, server down, page not found... Due to prod, network error
+msgUNAUTH: token needed
+msgPARAM: unchecked param sent to server
+msgFAIL: ''
+msgEXISTS: ''
+msgNotEXISTS: ''

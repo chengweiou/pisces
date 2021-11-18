@@ -1,4 +1,7 @@
 import { clone } from '@/fn'
+import { i18n } from '@/i18n'
+const { t } = i18n.global
+
 const CLEAN_STATE = {
   cache: false,
   show: false,
