@@ -43,12 +43,8 @@ const mutations = {
 
 function getNameAndContent(code) {
   switch (code) {
-    case '-1': return { name: 'Connection fail', content: 'Due to dev, server down, page not found... Due to prod, network error' }
-    case 'UNAUTH': return { name: 'Unauth to continue', content: 'token needed' }
-    case 'PARAM': return { name: 'Input param erorr', content: 'unchecked param sent to server' }
-    case 'FAIL': return { name: 'Operation Fail', content: '' }
-    case 'EXISTS': return { name: 'DATA exist', content: '' }
-    default: return { name: code }
+    case '-1': return { name: t(`codeNetwork`), content: t(`msgNetwork`) }
+    default: return { name: `code${code}`, content: `msg${code}` }
   }
 }
 
