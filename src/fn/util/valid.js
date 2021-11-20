@@ -3,12 +3,12 @@ import { i18n } from '@/i18n'
 const { t } = i18n.global
 
 export default {
-  async checkKey(k, value, callback, pass) {
+  async checkKey(k, payload, callback, pass) {
     if (pass) {
       callback()
       return
     }
-    let valid = await store.dispatch(`${k}/checkKey`, { name: value })
+    let valid = await store.dispatch(`${k}/checkKey`, payload)
     if (!valid) {
       callback(new Error(t('checkKey')))
       return

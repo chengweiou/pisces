@@ -7,6 +7,7 @@ import { i18n } from './i18n'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import ElInputDiv from '@/component/el/el-input-div.vue'
+import ElInputDate from '@/component/el/el-input-date.vue'
 
 import './assets/css/global.css'
 
@@ -17,5 +18,6 @@ app
   .use(i18n)
   .use(ElementPlus, { size: 'mini', zIndex: 0 })
   .component('ElInputDiv', ElInputDiv)
+  .component('ElInputDate', ElInputDate)
 
 app.mount('#app')

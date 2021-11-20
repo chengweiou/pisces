@@ -16,8 +16,8 @@ const actions = {
     if (payload.code === 'UNAUTH') {
       dispatch('me/logout', {}, { root: true })
     }
-    let name = payload.name || getNameAndContent(payload.code).name
-    let content = payload.content || getNameAndContent(payload.code).content
+    let name = t(payload.name || getNameAndContent(payload.code).name)
+    let content = t(payload.content || getNameAndContent(payload.code).content)
     commit('show', true)
     commit('name', name)
     commit('content', content)

@@ -45,6 +45,7 @@ needImg: 请选择图片
 needType: 请选择类型
 needPhone: 请输入电话
 needEmail: 请输入Email
+needUsername: 请输入用户名
 needUsernameLen3: 用户名长度不小于3
 needPasswordLen3: 密码长度不小于3
 needPerson: 请选择用户

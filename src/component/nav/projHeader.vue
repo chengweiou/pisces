@@ -37,7 +37,6 @@ const handleCommand = (v) => {
 }
 const go = (v) => {
   if (route.name == v) return
-  store.dispatch('tab/changeAsider', v)
   router.push({ name: v })
 }
 const logout = async() => {

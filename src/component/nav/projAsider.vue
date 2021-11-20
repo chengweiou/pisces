@@ -13,16 +13,16 @@
         <icon-location style="margin: 3px; width: 12px;"/>
         <span>{{t('person')}}{{t('managment')}}</span>
       </template>
-      <el-menu-item index="personlist" @click="goAsider('personList')">{{t('all')}}{{t('person')}}</el-menu-item>
-      <el-menu-item index="addperson" @click="goAsider('personAdd')">{{t('add')}}{{t('person')}}</el-menu-item>
+      <el-menu-item index="personList" @click="goAsider('personList')">{{t('all')}}{{t('person')}}</el-menu-item>
+      <el-menu-item index="personAdd" @click="goAsider('personAdd')">{{t('add')}}{{t('person')}}</el-menu-item>
     </el-sub-menu>
     <el-sub-menu index="petGroup">
       <template #title>
         <icon-location style="margin: 3px; width: 12px;"/>
         <span>{{t('pet')}}{{t('managment')}}</span>
       </template>
-      <el-menu-item index="petlist" @click="goAsider('petList')">{{t('pet')}}{{t('managment')}}</el-menu-item>
-      <el-menu-item index="addpet" @click="goAsider('petAdd')">{{t('add')}}{{t('pet')}}</el-menu-item>
+      <el-menu-item index="petList" @click="goAsider('petList')">{{t('pet')}}{{t('managment')}}</el-menu-item>
+      <el-menu-item index="petAdd" @click="goAsider('petAdd')">{{t('add')}}{{t('pet')}}</el-menu-item>
     </el-sub-menu>
     <el-sub-menu index="i18nGroup">
       <template #title>

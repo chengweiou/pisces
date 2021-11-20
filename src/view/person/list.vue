@@ -57,7 +57,7 @@ const filter = computed(() => store.state.person.filter)
 const list = computed(() => store.state.person.list)
 // tip: 定义 方法
 const go = (v) => {
-  store.dispatch('tab/changeAsider', v)
+  if (route.name == v) return
   router.push({ name: v })
 }
 const changeFilter = () => {

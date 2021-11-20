@@ -20,6 +20,21 @@ class Me {
       return rest
     })
   }
+  static update(e) {
+    let url = `${site.milkyway}/me`
+    let options = {
+      method: 'PUT',
+      body: e,
+    }
+    return fetchUtil.run(url, options)
+  }
+  // static findByCarina(filter) {
+  //   let url = `${site.carina}/me/person?${paramUtil.createUrlEncode(filter)}`
+  //   let options = {
+  //     method: 'GET',
+  //   }
+  //   return fetchUtil.run(url, options)
+  // }
 }
 
 class Mg {

@@ -51,7 +51,7 @@ const actions = {
     commit('detail', rest.data)
   },
   async updateByPerson({ commit, dispatch, state, rootState }, payload, config = {}) {
-    let { username, password, ...e } = payload
+    let { username, password, rePassword, ...e } = payload
     if (payload.hasUsername) e.username = username
     if (payload.hasPassword) e.password = password
     let rest = await service.mg().updateByPerson(e)

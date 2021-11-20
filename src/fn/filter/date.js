@@ -1,9 +1,10 @@
 /**
  * 变更日志形式: 使用 yyyy, yy, MMM, MM, dd, HH, mm, ss
- * option包含: from, to, utc 的格式传递
+ * option包含: from, to, showAfter 的格式传递
  * from default is utc time. to aways is local time
+ * showAfter: 只在这个值之后的时间 才会显示
  */
-const defaultOption = { from: 'yyyy-MM-ddTHH:mm:ssZ', to: 'yyyy-MM-dd HH:mm:ss', utc: true }
+const defaultOption = { from: 'yyyy-MM-ddTHH:mm:ssZ', to: 'yyyy-MM-dd HH:mm:ss', showAfter: '' }
 export default (e, option) => {
   if (!e) return ''
   if (Object.prototype.toString.call(e) === '[object Date]') e = e.toISOString()
@@ -11,9 +12,11 @@ export default (e, option) => {
   if (option.from === 'yyyy-MM-ddTHH:mm:ssZ' && e.length === 10) option.from = 'yyyy-MM-dd'
   let from = option.from
   let to = option.to
-  let date = new Date(`${transformFrom(e, from)}`)
+  let date = new Date(e)
   if (isNaN(date.getTime())) return `Invalid Date: ${e}`
-  return transformTo(date, to)
+  let result = transformTo(date, to)
+  if (option.showAfter && result < option.showAfter) return ''
+  return result
 }
 
 function transformFrom(e, format) {
@@ -28,6 +31,10 @@ function transformFrom(e, format) {
   return `${y || yy}-${m}-${d}T${hh}:${mm}:${ss}`
 }
 
+/**
+ * 出来的都应该是本地时间
+ * 传递 utc 给后端就直接 toISOString()
+ */
 function transformTo(e, format) {
   let y = format.includes('yyyy') ? e.getFullYear() : ''
   let yy = !y && format.includes('yy') ? `${e.getFullYear()}`.substring(2, 4) : ''
