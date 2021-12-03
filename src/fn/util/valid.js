@@ -27,6 +27,30 @@ export default {
     }
     callback()
   },
+  async checkPhone(k, payload, callback, pass) {
+    if (pass) {
+      callback()
+      return
+    }
+    let valid = await store.dispatch(`${k}/checkPhone`, payload)
+    if (!valid) {
+      callback(new Error(t('needPhoneOther')))
+      return
+    }
+    callback()
+  },
+  async checkEmail(k, payload, callback, pass) {
+    if (pass) {
+      callback()
+      return
+    }
+    let valid = await store.dispatch(`${k}/checkEmail`, payload)
+    if (!valid) {
+      callback(new Error(t('needEmailOther')))
+      return
+    }
+    callback()
+  },
   async checkUsername(k, value, callback, pass) {
     if (pass) {
       callback()
@@ -34,7 +58,7 @@ export default {
     }
     let valid = await store.dispatch(`${k}/checkUsername`, { username: value })
     if (!valid) {
-      callback(new Error(t('checkUsername')))
+      callback(new Error(t('needUsername')))
       return
     }
     callback()

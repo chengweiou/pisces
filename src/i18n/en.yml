@@ -44,7 +44,10 @@ needDes: Please enter description
 needImg: Please select image
 needType: Please select type
 needPhone: Please enter phone
+needPhoneOther: This phone has been used
 needEmail: Please enter email
+needEmailOther: This email has been used
+needUsername: Please enter username
 needUsernameLen3: username length > 3
 needPasswordLen3: password length > 3
 needPerson: Please select user

@@ -66,6 +66,29 @@ class All {
 }
 
 class Me {
+  static me() {
+    let url = `${site.andromeda}/me/account`
+    let options = {
+      method: 'GET',
+    }
+    return fetchUtil.run(url, options)
+  }
+  static updateAccount(e) {
+    let url = `${site.andromeda}/me/account`
+    let options = {
+      method: 'PUT',
+      body: e,
+    }
+    return fetchUtil.run(url, options)
+  }
+  static updatePassword(e) {
+    let url = `${site.andromeda}/me/account/password`
+    let options = {
+      method: 'PUT',
+      body: e,
+    }
+    return fetchUtil.run(url, options)
+  }
 }
 
 class Mg {

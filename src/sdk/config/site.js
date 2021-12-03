@@ -7,6 +7,8 @@ const site = {
 //  andromeda: `${host}${wormholePort?`:${wormholePort}`:''}/wormhole/andromeda`,
 //  triangulum: `${host}${wormholePort?`:${wormholePort}`:''}/wormhole/triangulum`,
 //  mothallah: `${host}${wormholePort?`:${wormholePort}`:''}/wormhole/mothallah`,
+//  carina: `${host}${wormholePort?`:${wormholePort}`:''}/wormhole/carina`,
+//  carinaWs: `${wsHost}${wormholePort?`:${wormholePort}`:''}/wormhole/carina`,
 }
 
 export default site

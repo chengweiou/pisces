@@ -1,6 +1,6 @@
 <template>
   <editor v-model="v" :init="{ plugins: ['image'], images_upload_handler: readPic }" @update:model-value="(value) => emit('update:modelValue', value)"/>
-  <!-- <el-input v-model="v" @update:model-value="(value) => emit('update:modelValue', value)" type="textarea" /> -->
+  <!-- <el-input v-model="v" type="textarea" @update:model-value="(value) => emit('update:modelValue', value)" /> -->
 </template>
 
 <script setup>
@@ -10,7 +10,7 @@ import Editor from '@tinymce/tinymce-vue'
 import { ref, computed, toRefs } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import { wait, empty, clone, site } from '@/fn'
+import { pic, wait, empty, clone, site } from '@/fn'
 // tip: 定义 各种 use
 const store = useStore(), router = useRouter(), route = useRoute()
 // tip: 定义 页面
@@ -30,7 +30,7 @@ const readPic = async(blobInfo, success, failure, progress) => {
     failure('上传失败')
     return
   }
-  success(`${site.mothallah}${imgsrc}`)
+  success(pic(imgsrc))
 }
 // tip: 初始化空数据
 </script>
