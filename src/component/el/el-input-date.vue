@@ -1,5 +1,5 @@
 <template>
-  <el-date-picker v-model="v" :type="type" :placeholder="placeholder" :range-separator="rangeSeparator" :start-placeholder="startPlaceholder" :end-placeholder="endPlaceholder" @update:model-value="change" @change="change" />
+  <el-date-picker :model-value="modelValue" :type="type" :placeholder="placeholder" :range-separator="rangeSeparator" :start-placeholder="startPlaceholder" :end-placeholder="endPlaceholder" @update:model-value="change" @change="change" />
 </template>
 
 <script setup>
@@ -18,7 +18,6 @@ const props = defineProps({
   startPlaceholder: { type: String, default: '' },
   endPlaceholder: { type: String, default: '' },
 })
-const v = ref(props.modelValue)
 const emit = defineEmits(['update:modelValue'])
 // tip: 定义 不需要关联的
 // tip: 定义 需要关联的
@@ -34,7 +33,7 @@ const change = (v) => {
     let v1 = v[1] ? date(v[1], { to: 'yyyy-MM-dd'}) : ''
     emit('update:modelValue', [v0, v1])
   } else if (props.type=='datetime') {
-    emit('update:modelValue', v.toISOString())
+    emit('update:modelValue', new Date(v).toISOString())
   } else if (props.type=='datetimerange') {
     let v0 = v[0] ? v[0].toISOString() : ''
     let v1 = v[1] ? v[1].toISOString() : ''
