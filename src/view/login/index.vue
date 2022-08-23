@@ -1,6 +1,6 @@
 <template>
   <div class="center bg-dark c-white" style="width: 100%; height: 100%;">
-    <el-form ref="formEl" :model="form" :rules="rules" style="width: 400px; height: 500px;" size="medium">
+    <el-form ref="formEl" :model="form" :rules="rules" style="width: 400px; height: 500px;" size="default">
       <div style="font-size: 42px;">pisces{{t('system')}}</div>
       <div style="margin-bottom: 10px;">{{t('systemTemplate')}}</div>
       <el-form-item prop="username">
