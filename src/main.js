@@ -15,7 +15,7 @@ app
   .use(router)
   .use(store)
   .use(i18n)
-  .use(ElementPlus, { size: 'mini', zIndex: 0 })
+  .use(ElementPlus, { size: 'small', zIndex: 0 })
   .component('ElInputDiv', ElInputDiv)
   .component('ElInputDate', ElInputDate)
 

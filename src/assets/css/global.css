@@ -95,7 +95,7 @@ button { outline: none; }
 } */
 
 .el-card {
-  --el-card-background-color: #070B34;
+  background-color: #070B34;
   --el-card-border-color: #070B34;
 }
 
@@ -114,13 +114,13 @@ button { outline: none; }
   --el-border-color-base: #2B2F77;
 }
 .el-menu {
-  --el-menu-background-color: transparent;
+  background-color: transparent;
   --el-menu-hover-background-color: #409eff;
   --el-menu-active-color: #fff;
   --el-menu-text-color: #7DF9FF;
 }
 .el-table {
-  --el-table-background-color: transparent;
+  background-color: transparent;
   --el-table-tr-background-color: transparent;
   --el-table-row-hover-background-color: transparent;
   --el-table-font-color: #7DF9FF;
@@ -130,18 +130,18 @@ button { outline: none; }
 }
 
 .el-pagination {
-  --el-pagination-background-color: transparent;
+  background-color: transparent;
   --el-pagination-button-background-color: transparent;
   --el-pagination-button-disabled-background-color: transparent;
 }
 .el-input {
-  --el-input-background-color: transparent;
+  background-color: transparent;
 }
 
 .el-button {
   --el-button-font-weight: var(--el-font-weight-primary);
   --el-button-border-color: #2B2F77;
-  --el-button-background-color: transparent;
+  background-color: transparent;
   --el-button-font-color: var(--el-text-color-regular);
   --el-button-disabled-font-color: var(--el-text-color-placeholder);
   --el-button-disabled-background-color: var(--el-color-white);

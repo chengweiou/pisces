@@ -10,7 +10,7 @@
 
 <script setup>
 // tip: 导入 component
-import { ArrowLeft as IconArrowLeft } from '@element-plus/icons'
+import { ArrowLeft as IconArrowLeft } from '@element-plus/icons-vue'
 // tip: 导入 data
 import { ref, computed, onMounted } from 'vue'
 import { useStore } from 'vuex'

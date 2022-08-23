@@ -39,7 +39,7 @@
 <script setup>
 // tip: 导入 component
 import Avatar from '@/component/image/avatar.vue'
-import { DocumentChecked as IconDocumentChecked, Location as IconLocation } from '@element-plus/icons'
+import { DocumentChecked as IconDocumentChecked, Location as IconLocation } from '@element-plus/icons-vue'
 // tip: 导入 data
 import { ref, computed, onMounted } from 'vue'
 import { useStore } from 'vuex'

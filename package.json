@@ -9,12 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@element-plus/icons": "^0.0.11",
-    "@tinymce/tinymce-vue": "^4.0.4",
-    "echarts": "^5.2.2",
-    "element-plus": "latest",
+    "@element-plus/icons-vue": "^2.0.9",
+    "@tinymce/tinymce-vue": "^5",
+    "echarts": "^5",
+    "element-plus": "^2",
     "vue": "^3.2.37",
-    "vue-echarts": "^6.0.0",
+    "vue-echarts": "^6",
     "vue-i18n": "^9",
     "vue-router": "^4",
     "vuex": "^4"
@@ -23,7 +23,7 @@
     "@intlify/vite-plugin-vue-i18n": "^6.0.1",
     "@vitejs/plugin-vue": "^3.0.3",
     "@vue/cli-plugin-eslint": "~5.0.8",
-    "@vue/compiler-sfc": "^3.2.21",
+    "@vue/compiler-sfc": "^3.2.37",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8",
     "eslint-plugin-vue": "^9.4.0",
@@ -35,8 +35,7 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,vue}": [
-    ]
+    "*.{js,jsx,vue}": []
   },
   "type": "module"
 }

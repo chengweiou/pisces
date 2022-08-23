@@ -30,7 +30,7 @@
 <script setup>
 // tip: 导入 component
 import ProjHeader from '@/component/nav/projHeader.vue'
-import { PieChart as IconPieChart } from '@element-plus/icons'
+import { PieChart as IconPieChart } from '@element-plus/icons-vue'
 import { ListThRow, ListTdRow, ListTh, ListTd, ListTdDelete, ListThDelete } from '@/component/proj/list'
 import ListSearchBar from '@/component/proj/listSearchBar.vue'
 // tip: 导入 data
