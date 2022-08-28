@@ -114,37 +114,36 @@ button { outline: none; }
   --el-border-color-base: #2B2F77;
 }
 .el-menu {
-  background-color: transparent;
-  --el-menu-hover-background-color: #409eff;
+  --el-menu-bg-color: transparent;
+  --el-menu-hover-bg-color: #409eff;
   --el-menu-active-color: #fff;
   --el-menu-text-color: #7DF9FF;
 }
 .el-table {
-  background-color: transparent;
-  --el-table-tr-background-color: transparent;
-  --el-table-row-hover-background-color: transparent;
+  --el-table-bg-color: transparent;
+  --el-table-tr-bg-color: transparent;
+  --el-table-row-hover-bg-color: transparent;
   --el-table-font-color: #7DF9FF;
 }
 .el-table th.el-table__cell {
-  --el-table-header-background-color: transparent;
+  --el-table-header-bg-color: transparent;
 }
 
 .el-pagination {
-  background-color: transparent;
-  --el-pagination-button-background-color: transparent;
-  --el-pagination-button-disabled-background-color: transparent;
+  --el-pagination-bg-color: transparent;
+  --el-pagination-button-disabled-bg-color: transparent;
 }
 .el-input {
-  background-color: transparent;
+  --el-input-bg-color: transparent;
 }
 
 .el-button {
   --el-button-font-weight: var(--el-font-weight-primary);
   --el-button-border-color: #2B2F77;
-  background-color: transparent;
+  --el-button-bg-color: transparent;
   --el-button-font-color: var(--el-text-color-regular);
   --el-button-disabled-font-color: var(--el-text-color-placeholder);
-  --el-button-disabled-background-color: var(--el-color-white);
+  --el-button-disabled-bg-color: var(--el-color-white);
   --el-button-disabled-border-color: var(--el-border-color-light);
   --el-button-divide-border-color: rgba(255, 255, 255, 0.5);
 }
