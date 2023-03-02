@@ -38,6 +38,7 @@
             <div :class="{ 'c-green': security.password.needLower, 'c-red': !security.password.needLower }"><icon-check v-if="security.password.needLower" class="icon"/><icon-close v-else class="icon"/>{{ t('passwordNeedLower') }}</div>
             <div :class="{ 'c-green': security.password.needNum, 'c-red': !security.password.needNum }"><icon-check v-if="security.password.needNum" class="icon"/><icon-close v-else class="icon"/>{{ t('passwordNeedNum') }}</div>
             <div :class="{ 'c-green': security.password.needSpec, 'c-red': !security.password.needSpec }"><icon-check v-if="security.password.needSpec" class="icon"/><icon-close v-else class="icon"/>{{ t('passwordNeedSpec') }}</div>
+            <div :class="{ 'c-green': security.needMix, 'c-red': !security.needMix }"><icon-check v-if="security.needMix" class="icon"/><icon-close v-else class="icon"/>{{ t(needMixI18nMap[securityRule.mix]) }}</div>
           </div>
         </el-form-item>
         <el-form-item style="flex: 1;" :label="t('rePassword')" prop="rePassword">
@@ -94,6 +95,11 @@ const securityRule = {
   },
   mix: 'INCLUDE',
 }
+const needMixI18nMap = {
+  'ALL': 'needMixAll',
+  'SAME': 'needMixSame',
+  'INCLUDE': 'needMixInclude',
+}
 // tip: 定义 需要关联的
 const form = ref(clone(cleanForm))
 const loading = ref(false)
@@ -110,9 +116,7 @@ const security = ref({
     needNum: false,
     needSpec: false,
   },
-  mix: {
-
-  },
+  needMix: false,
 })
 // tip: 定义 computed 计算的
 // tip: 定义 方法
@@ -141,10 +145,10 @@ const changeUsername = () => {
   security.value.username.needLength = form.value.username.length >= securityRule.username.needLength
   security.value.username.needStartWith = (form.value.username.match(/^[0-9A-Za-z]/) || []).length >= 1
   security.value.username.needNormal = (form.value.username.match(/^[\d\w.@-]+$/) || []).length >= 1
+  if (security.value.password) security.value.needMix = securityRule.mix == 'SAME' ? form.value.username != form.value.password : securityRule.mix == 'INCLUDE' ? !form.value.username.includes(form.value.password) && !form.value.password.includes(form.value.username) : true
 }
 const validUsername =  (callback) => {
   if (!security.value.username.needLength || !security.value.username.needStartWith || !security.value.username.needNormal) {
-    console.log(security.value.username, security.value.username.needStartWith, security.value.username.needNormal)
     callback(new Error())
     return
   }
@@ -157,6 +161,7 @@ const changePassword = () => {
   security.value.password.needLower = (form.value.password.match(/(?=.*[a-z])/) || []).length >= securityRule.password.needLower
   security.value.password.needNum = (form.value.password.match(/(?=.*\d)/) || []).length >= securityRule.password.needNum
   security.value.password.needSpec = (form.value.password.match(/([^\w\s])/) || []).length >= securityRule.password.needSpec
+  if (security.value.username) security.value.needMix = securityRule.mix == 'SAME' ? form.value.username != form.value.password : securityRule.mix == 'INCLUDE' ? !form.value.username.includes(form.value.password) && !form.value.password.includes(form.value.username) : true
 }
 
 const validPassword =  (callback) => {
@@ -192,6 +197,9 @@ en:
   passwordNeedLower: Password must have at least one lowercase (a-z).
   passwordNeedNum: Password must have at least one number (0-9).
   passwordNeedSpec: Password must have at least one special character(!"at"#%^&*()....).
+  needMixAll: ok
+  needMixSame: Username and password cannot be the same
+  needMixInclude: Username and password cannot include each other
 zh:
   addPerson: 添加用户
   usernameNeedLength: 用户名至少6位数
@@ -202,4 +210,7 @@ zh:
   passwordNeedLower: 密码必须包含至少一个小写 (a-z).
   passwordNeedNum: 密码必须包含至少一个数字 (0-9).
   passwordNeedSpec: 密码必须包含至少一个特殊字符 (!"at"#%^&*()....).
+  needMixAll: ok
+  needMixSame: 用户名与密码不能完全相同
+  needMixInclude: 用户名内容不能包含密码，密码内容不能包含用户名
 </i18n>
