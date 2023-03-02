@@ -2,7 +2,7 @@
 <div class="df">
   <div class="df" style="margin: 0 20px 10px; padding: 3px; background: #2B2F77; border-radius: 3px;">
     <label v-for="(e, i) in list" :key="e" class="center pointer tabPiece">
-      <input v-model="radio" type="radio" @change="changeTab(`${i}`)">
+      <input v-model="radio" :value="i" type="radio" @change="changeTab(`${i}`)">
       <div class="center">{{ e }}</div>
     </label>
   </div>

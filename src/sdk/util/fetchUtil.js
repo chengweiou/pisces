@@ -5,8 +5,8 @@ import dataMap from './data'
 export default class {
   // todo 加入请求组，第一个作为测试token，然后过期，则刷新token
   static async run(url, options) {
-    return this.runPredev(url, options) // 当后端没有数据，前端需要自行编辑数据的时候
-    // return this.r(url, options)
+    const preDev = import.meta.env.VITE_APP_PREDEV
+    return preDev ? this.runPredev(url, options) : this.r(url, options)
   }
   static async r(url, options) {
     options.headers = new Headers(options.headers)
@@ -18,7 +18,7 @@ export default class {
     }
     options.headers.append('authorization', `Bearer ${storage.get('token')}`)
     // todo tip: 直接带登录账号请求服务端 生产环境去除
-    options.headers.append('loginAccount', `${storage.get('loginAccount')}`)
+    // options.headers.append('loginAccount', `${storage.get('loginAccount')}`)
     let response = {}
     try {
       response = await fetch(url, options)
@@ -75,5 +75,46 @@ export default class {
     let limitEnd = param.indexOf('&', limitStart) != -1 ? param.indexOf('&', limitStart) : param.length
     let limit = param.substring(limitStart, limitEnd)
     return parseInt(limit)
+  }
+
+  static async download(url, options, filename) {
+    const preDev = import.meta.env.VITE_APP_PREDEV
+    return preDev ? this.downloadPredev(url, options, filename) : this.d(url, options, filename)
+  }
+  static async d(url, options, filename) {
+    // const preDev = import.meta.env.VITE_APP_PREDEV
+    // return preDev ? this.runPredev(url, options) : this.r(url, options)
+    options.headers = new Headers(options.headers)
+    if (options.body && options.body.constructor === Object) {
+      options.body = paramUtil.createUrlEncode(options.body)
+      if (!options.headers.get('Content-Type')) {
+        options.headers.append('Content-Type', 'application/x-www-form-urlencoded')
+      }
+    }
+    options.headers.append('authorization', `Bearer ${storage.get('token')}`)
+    // todo tip: 直接带登录账号请求服务端 生产环境去除
+    // options.headers.append('loginAccount', `${storage.get('loginAccount')}`)
+    let response = {}
+    try {
+      response = await fetch(url, options)
+    } catch (err) {
+      return exceptionUtil.createRest(null, err)
+    }
+    if (!response.ok) return exceptionUtil.createRest(response.status, response.statusText)
+    let blob = await response.blob()
+    let a = document.createElement('a')
+    a.href = window.URL.createObjectURL(blob)
+    a.setAttribute('download', filename)
+    a.click()
+    return { code: 'OK' }
+  }
+
+  static async downloadPredev(url, options, filename) {
+    let blob = 'data:text/html,prev dev data'
+    let a = document.createElement('a')
+    a.href = blob
+    a.setAttribute('download', filename)
+    a.click()
+    return { code: 'OK' }
   }
 }

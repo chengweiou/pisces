@@ -1,4 +1,5 @@
 const host = import.meta.env.VITE_APP_HOST
+const wsHost = import.meta.env.VITE_APP_WS_HOST
 const wormholePort = import.meta.env.VITE_APP_WORMHOLE_PORT
 
 const site = {

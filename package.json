@@ -4,6 +4,8 @@
   "scripts": {
     "build": "vite build",
     "build:uat": "vite build --mode uat",
+    "build:aws": "vite build --mode aws",
+    "build:prod": "vite build --mode prod",
     "dev": "vite",
     "preview": "vite preview"
   },
