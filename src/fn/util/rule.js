@@ -9,6 +9,7 @@ class Need {
   }
   min(v) { this._min = v; return this }
   max(v) { this._max = v; return this }
+  type(v) { this._type = v; return this }
   msg(v) { this._msg = v; return this }
   build() {
     let result = {required: true, trigger: 'blur'}
@@ -20,6 +21,7 @@ class Need {
     }
     if (this._min) result.min = this._min
     if (this._max) result.max = this._max
+    if (this._type) result.type = this._type
     return {...result, message: this._msg}
   }
 }
@@ -43,7 +45,7 @@ const simpleRule = {
   needImg: new Need('img').build(),
   needType: new Need('type').build(),
   needPhone: new Need('phone').build(),
-  needEmail: new Need('email').build(),
+  needEmail: new Need('email').type('email').build(),
   needUsername: new Need('username').build(),
   needPassword: new Need('password').build(),
   needRePassword: new Need('rePassword').build(),
