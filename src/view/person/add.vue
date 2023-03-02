@@ -145,7 +145,7 @@ const changeUsername = () => {
   security.value.username.needLength = form.value.username.length >= securityRule.username.needLength
   security.value.username.needStartWith = (form.value.username.match(/^[0-9A-Za-z]/) || []).length >= 1
   security.value.username.needNormal = (form.value.username.match(/^[\d\w.@-]+$/) || []).length >= 1
-  if (security.value.password) security.value.needMix = securityRule.mix == 'SAME' ? form.value.username != form.value.password : securityRule.mix == 'INCLUDE' ? !form.value.username.includes(form.value.password) && !form.value.password.includes(form.value.username) : true
+  if (form.value.password) security.value.needMix = securityRule.mix == 'SAME' ? form.value.username != form.value.password : securityRule.mix == 'INCLUDE' ? !form.value.username.includes(form.value.password) && !form.value.password.includes(form.value.username) : true
 }
 const validUsername =  (callback) => {
   if (!security.value.username.needLength || !security.value.username.needStartWith || !security.value.username.needNormal) {
@@ -161,7 +161,7 @@ const changePassword = () => {
   security.value.password.needLower = (form.value.password.match(/(?=.*[a-z])/) || []).length >= securityRule.password.needLower
   security.value.password.needNum = (form.value.password.match(/(?=.*\d)/) || []).length >= securityRule.password.needNum
   security.value.password.needSpec = (form.value.password.match(/([^\w\s])/) || []).length >= securityRule.password.needSpec
-  if (security.value.username) security.value.needMix = securityRule.mix == 'SAME' ? form.value.username != form.value.password : securityRule.mix == 'INCLUDE' ? !form.value.username.includes(form.value.password) && !form.value.password.includes(form.value.username) : true
+  if (form.value.username) security.value.needMix = securityRule.mix == 'SAME' ? form.value.username != form.value.password : securityRule.mix == 'INCLUDE' ? !form.value.username.includes(form.value.password) && !form.value.password.includes(form.value.username) : true
 }
 
 const validPassword =  (callback) => {
